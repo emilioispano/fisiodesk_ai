@@ -1,0 +1,121 @@
+[
+  {
+    "_id": { "$oid": "607f1f77bcf86cd799439101" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439011" },
+    "data": { "$date": "2024-11-15T09:00:00Z" },
+    "descrizione": "Paziente riferisce miglioramento significativo del dolore lombare. Scala del dolore da 8/10 a 3/10. Mobilità migliorata, riesce a camminare per 30 minuti senza difficoltà.",
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439021" }
+  },
+  {
+    "_id": { "$oid": "607f1f77bcf86cd799439102" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439011" },
+    "data": { "$date": "2024-12-01T09:00:00Z" },
+    "descrizione": "Ottimi progressi nella gestione della lombalgia. Il paziente riferisce di riuscire a svolgere le attività quotidiane con minimo fastidio. Dolore residuo solo in flessione completa.",
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439021" }
+  },
+  {
+    "_id": { "$oid": "607f1f77bcf86cd799439103" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439012" },
+    "data": { "$date": "2024-10-20T14:00:00Z" },
+    "descrizione": "Prima valutazione: paziente lamenta forte dolore alla bassa schiena da circa 3 mesi. Rigidità mattutina presente.",
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439021" }
+  },
+  {
+    "_id": { "$oid": "607f1f77bcf86cd799439104" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439012" },
+    "data": { "$date": "2024-11-10T14:00:00Z" },
+    "descrizione": "Paziente mostra segni di recupero. La rachialgia lombare è diminuita sensibilmente. Riferisce che il fastidio alla zona lombare è più sopportabile.",
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439021" }
+  },
+  {
+    "_id": { "$oid": "607f1f77bcf86cd799439105" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439012" },
+    "data": { "$date": "2024-12-05T14:00:00Z" },
+    "descrizione": "Netto miglioramento del quadro clinico. La signora riesce ora a piegarsi senza dolore acuto alla schiena.",
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439021" }
+  },
+  {
+    "_id": { "$oid": "607f1f77bcf86cd799439106" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439013" },
+    "data": { "$date": "2024-10-15T09:30:00Z" },
+    "descrizione": "Prima valutazione. Paziente presenta cervicalgia acuta con limitazione nei movimenti del collo. Dolore 7/10. Prescritta terapia antinfiammatoria.",
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439021" }
+  },
+  {
+    "_id": { "$oid": "607f1f77bcf86cd799439107" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439013" },
+    "data": { "$date": "2024-11-20T09:30:00Z" },
+    "descrizione": "Miglioramento della cervicalgia. Il paziente riferisce riduzione del dolore cervicale da 7/10 a 4/10. Mobilità del collo migliorata del 60%.",
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439021" }
+  },
+  {
+    "_id": { "$oid": "607f1f77bcf86cd799439108" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439014" },
+    "data": { "$date": "2024-09-10T11:00:00Z" },
+    "descrizione": "Paziente con mal di schiena cronico da 6 mesi. Riferisce forte dolore nella zona lombare, soprattutto al mattino. Difficoltà nelle attività quotidiane.",
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439022" }
+  },
+  {
+    "_id": { "$oid": "607f1f77bcf86cd799439109" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439014" },
+    "data": { "$date": "2024-10-25T11:00:00Z" },
+    "descrizione": "Situazione stazionaria. La lombalgia persiste con intensità invariata. Paziente scoraggiata, consigliato approccio multidisciplinare.",
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439022" }
+  },
+  {
+    "_id": { "$oid": "607f1f77bcf86cd799439110" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439014" },
+    "data": { "$date": "2024-12-10T11:00:00Z" },
+    "descrizione": "Lieve peggioramento. Il mal di schiena si è esteso anche alla gamba destra. Sospetta sciatalgia. Richiesta RMN urgente.",
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439022" }
+  },
+  {
+    "_id": { "$oid": "607f1f77bcf86cd799439111" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439015" },
+    "data": { "$date": "2024-09-15T16:00:00Z" },
+    "descrizione": "Valutazione iniziale: forte low back pain con irradiazione glutea bilaterale. Scala VAS 9/10. Paziente molto sofferente, difficoltà a stare seduto.",
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439021" }
+  },
+  {
+    "_id": { "$oid": "607f1f77bcf86cd799439112" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439015" },
+    "data": { "$date": "2024-10-30T16:00:00Z" },
+    "descrizione": "Ottimi progressi! Il paziente sta molto meglio. Dolore lombare ridotto a 3/10. Riesce a lavorare senza problemi. Continua con esercizi a casa.",
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439021" }
+  },
+  {
+    "_id": { "$oid": "607f1f77bcf86cd799439113" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439015" },
+    "data": { "$date": "2024-12-15T16:00:00Z" },
+    "descrizione": "Situazione eccellente. Il signor Romano riferisce completa risoluzione della lombalgia. Può fare sport senza limitazioni. Consigliato mantenimento.",
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439021" }
+  },
+  {
+    "_id": { "$oid": "607f1f77bcf86cd799439114" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439016" },
+    "data": { "$date": "2024-06-20T08:45:00Z" },
+    "descrizione": "Spalla congelata destra. Paziente con grave limitazione articolare, impossibilità ad alzare il braccio oltre i 45°. Dolore notturno importante.",
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439022" }
+  },
+  {
+    "_id": { "$oid": "607f1f77bcf86cd799439115" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439017" },
+    "data": { "$date": "2024-09-25T10:15:00Z" },
+    "descrizione": "Prima visita per rachialgia lombare acuta insorta dopo sforzo fisico. Paziente riferisce 'colpo della strega' mentre sollevava un peso. VAS 8/10.",
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439023" }
+  },
+  {
+    "_id": { "$oid": "607f1f77bcf86cd799439116" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439017" },
+    "data": { "$date": "2024-11-10T10:15:00Z" },
+    "descrizione": "Buon recupero dalla lombalgia acuta. Il dolore alla bassa schiena è molto diminuito (VAS 2/10). Ripresa graduale attività lavorativa.",
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439023" }
+  },
+  {
+    "_id": { "$oid": "607f1f77bcf86cd799439117" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439017" },
+    "data": { "$date": "2024-12-18T10:15:00Z" },
+    "descrizione": "Controllo finale. Il signor Colombo sta benissimo, nessun dolore residuo alla zona lombare. Ha ripreso tutte le attività senza problemi.",
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439023" }
+  }
+]

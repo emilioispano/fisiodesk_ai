@@ -1,0 +1,191 @@
+[
+  {
+    "_id": { "$oid": "807f1f77bcf86cd799439301" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439011" },
+    "data": { "$date": "2024-11-15T09:00:00Z" },
+    "stato": "completato",
+    "durata": 60,
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439021" },
+    "note": "Controllo mensile"
+  },
+  {
+    "_id": { "$oid": "807f1f77bcf86cd799439302" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439011" },
+    "data": { "$date": "2024-12-01T09:00:00Z" },
+    "stato": "completato",
+    "durata": 60,
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439021" },
+    "note": "Follow-up"
+  },
+  {
+    "_id": { "$oid": "807f1f77bcf86cd799439303" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439011" },
+    "data": { "$date": "2024-12-20T09:00:00Z" },
+    "stato": "no_show",
+    "durata": 60,
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439021" },
+    "note": "Controllo programmato - Paziente non presentato"
+  },
+  {
+    "_id": { "$oid": "807f1f77bcf86cd799439304" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439012" },
+    "data": { "$date": "2024-12-22T14:00:00Z" },
+    "stato": "no_show",
+    "durata": 60,
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439021" },
+    "note": "Follow-up - Non presentato"
+  },
+  {
+    "_id": { "$oid": "807f1f77bcf86cd799439305" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439013" },
+    "data": { "$date": "2024-10-15T09:30:00Z" },
+    "stato": "completato",
+    "durata": 45,
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439021" },
+    "note": "Prima valutazione cervicalgia"
+  },
+  {
+    "_id": { "$oid": "807f1f77bcf86cd799439306" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439013" },
+    "data": { "$date": "2024-11-20T09:30:00Z" },
+    "stato": "completato",
+    "durata": 60,
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439021" },
+    "note": "Controllo cervicalgia"
+  },
+  {
+    "_id": { "$oid": "807f1f77bcf86cd799439307" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439013" },
+    "data": { "$date": "2024-12-28T09:30:00Z" },
+    "stato": "prenotato",
+    "durata": 60,
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439021" },
+    "note": "Controllo finale cervicalgia"
+  },
+  {
+    "_id": { "$oid": "807f1f77bcf86cd799439308" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439014" },
+    "data": { "$date": "2024-09-10T11:00:00Z" },
+    "stato": "completato",
+    "durata": 60,
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439022" },
+    "note": "Prima valutazione lombalgia"
+  },
+  {
+    "_id": { "$oid": "807f1f77bcf86cd799439309" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439014" },
+    "data": { "$date": "2024-10-25T11:00:00Z" },
+    "stato": "completato",
+    "durata": 60,
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439022" },
+    "note": "Controllo lombalgia - situazione stazionaria"
+  },
+  {
+    "_id": { "$oid": "807f1f77bcf86cd799439310" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439014" },
+    "data": { "$date": "2024-12-10T11:00:00Z" },
+    "stato": "completato",
+    "durata": 45,
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439022" },
+    "note": "Valutazione peggioramento - sospetta sciatalgia"
+  },
+  {
+    "_id": { "$oid": "807f1f77bcf86cd799439311" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439014" },
+    "data": { "$date": "2024-12-24T11:00:00Z" },
+    "stato": "no_show",
+    "durata": 60,
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439022" },
+    "note": "Follow-up neurologico - Paziente non si è presentato"
+  },
+  {
+    "_id": { "$oid": "807f1f77bcf86cd799439312" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439015" },
+    "data": { "$date": "2024-09-15T16:00:00Z" },
+    "stato": "completato",
+    "durata": 60,
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439021" },
+    "note": "Prima valutazione low back pain"
+  },
+  {
+    "_id": { "$oid": "807f1f77bcf86cd799439313" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439015" },
+    "data": { "$date": "2024-10-30T16:00:00Z" },
+    "stato": "completato",
+    "durata": 60,
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439021" },
+    "note": "Controllo - ottimi progressi"
+  },
+  {
+    "_id": { "$oid": "807f1f77bcf86cd799439314" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439015" },
+    "data": { "$date": "2024-12-15T16:00:00Z" },
+    "stato": "completato",
+    "durata": 45,
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439021" },
+    "note": "Controllo finale - guarigione completa"
+  },
+  {
+    "_id": { "$oid": "807f1f77bcf86cd799439315" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439015" },
+    "data": { "$date": "2024-12-30T16:00:00Z" },
+    "stato": "no_show",
+    "durata": 30,
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439021" },
+    "note": "Controllo mantenimento - Non presentato"
+  },
+  {
+    "_id": { "$oid": "807f1f77bcf86cd799439316" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439016" },
+    "data": { "$date": "2024-06-20T08:45:00Z" },
+    "stato": "completato",
+    "durata": 60,
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439022" },
+    "note": "Prima valutazione spalla congelata"
+  },
+  {
+    "_id": { "$oid": "807f1f77bcf86cd799439317" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439016" },
+    "data": { "$date": "2024-07-15T08:45:00Z" },
+    "stato": "cancellato",
+    "durata": 60,
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439022" },
+    "note": "Cancellato per motivi familiari"
+  },
+  {
+    "_id": { "$oid": "807f1f77bcf86cd799439318" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439017" },
+    "data": { "$date": "2024-09-25T10:15:00Z" },
+    "stato": "completato",
+    "durata": 45,
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439023" },
+    "note": "Urgenza - colpo della strega"
+  },
+  {
+    "_id": { "$oid": "807f1f77bcf86cd799439319" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439017" },
+    "data": { "$date": "2024-11-10T10:15:00Z" },
+    "stato": "completato",
+    "durata": 60,
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439023" },
+    "note": "Controllo - buon recupero"
+  },
+  {
+    "_id": { "$oid": "807f1f77bcf86cd799439320" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439017" },
+    "data": { "$date": "2024-12-18T10:15:00Z" },
+    "stato": "completato",
+    "durata": 30,
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439023" },
+    "note": "Controllo finale - dimissione"
+  },
+  {
+    "_id": { "$oid": "807f1f77bcf86cd799439321" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439017" },
+    "data": { "$date": "2024-12-31T10:15:00Z" },
+    "stato": "no_show",
+    "durata": 30,
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439023" },
+    "note": "Controllo preventivo - Non si è presentato"
+  }
+]

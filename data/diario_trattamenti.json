@@ -1,0 +1,107 @@
+[
+  {
+    "_id": { "$oid": "707f1f77bcf86cd799439201" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439011" },
+    "data": { "$date": "2024-11-15T09:30:00Z" },
+    "descrizione": "Seduta completata con successo. Eseguita mobilizzazione lombare e TENS. Paziente risponde bene al trattamento, riferisce sollievo immediato.",
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439021" }
+  },
+  {
+    "_id": { "$oid": "707f1f77bcf86cd799439202" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439011" },
+    "data": { "$date": "2024-12-01T09:30:00Z" },
+    "descrizione": "Applicata terapia manuale su zona lombare. Il mal di schiena è decisamente diminuito durante la seduta.",
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439021" }
+  },
+  {
+    "_id": { "$oid": "707f1f77bcf86cd799439203" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439012" },
+    "data": { "$date": "2024-11-10T14:30:00Z" },
+    "descrizione": "Trattamento focalizzato su rachide lombare. Buona risposta alla terapia.",
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439021" }
+  },
+  {
+    "_id": { "$oid": "707f1f77bcf86cd799439204" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439013" },
+    "data": { "$date": "2024-10-15T09:45:00Z" },
+    "descrizione": "Prima seduta per cervicalgia. Applicata terapia manuale cervicale e TENS. Paziente teso ma collaborativo.",
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439021" }
+  },
+  {
+    "_id": { "$oid": "707f1f77bcf86cd799439205" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439013" },
+    "data": { "$date": "2024-11-20T09:45:00Z" },
+    "descrizione": "Prosegue trattamento cervicale. Mobilizzazione passiva e attiva. Il paziente riferisce netto miglioramento della sintomatologia.",
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439021" }
+  },
+  {
+    "_id": { "$oid": "707f1f77bcf86cd799439206" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439014" },
+    "data": { "$date": "2024-09-10T11:30:00Z" },
+    "descrizione": "Iniziato ciclo di terapie per mal di schiena cronico. Applicata tecarterapia sulla zona lombare. Paziente molto dolorante durante il trattamento.",
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439022" }
+  },
+  {
+    "_id": { "$oid": "707f1f77bcf86cd799439207" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439014" },
+    "data": { "$date": "2024-10-25T11:30:00Z" },
+    "descrizione": "Seduta difficile. La paziente non risponde bene alla terapia. Dolore lombare persistente. Modificato approccio terapeutico.",
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439022" }
+  },
+  {
+    "_id": { "$oid": "707f1f77bcf86cd799439208" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439014" },
+    "data": { "$date": "2024-12-10T11:30:00Z" },
+    "descrizione": "Situazione complicata. Il mal di schiena non migliora nonostante le terapie. Consigliata valutazione neurologica per sospetta sciatalgia.",
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439022" }
+  },
+  {
+    "_id": { "$oid": "707f1f77bcf86cd799439209" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439015" },
+    "data": { "$date": "2024-09-15T16:30:00Z" },
+    "descrizione": "Primo trattamento per low back pain acuto. Applicata terapia manuale decontratturante. Il paziente ha trovato immediato sollievo.",
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439021" }
+  },
+  {
+    "_id": { "$oid": "707f1f77bcf86cd799439210" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439015" },
+    "data": { "$date": "2024-10-30T16:30:00Z" },
+    "descrizione": "Ottima seduta. Eseguiti esercizi di rinforzo del core e stretching lombare. Il paziente sta decisamente meglio, quasi senza dolore.",
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439021" }
+  },
+  {
+    "_id": { "$oid": "707f1f77bcf86cd799439211" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439015" },
+    "data": { "$date": "2024-12-15T16:30:00Z" },
+    "descrizione": "Ultima seduta del ciclo. Paziente completamente recuperato dalla lombalgia. Forniti esercizi di mantenimento da fare a casa.",
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439021" }
+  },
+  {
+    "_id": { "$oid": "707f1f77bcf86cd799439212" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439016" },
+    "data": { "$date": "2024-06-20T09:00:00Z" },
+    "descrizione": "Iniziato trattamento per spalla congelata. Mobilizzazione passiva molto limitata. Applicato ultrasuoni e crioterapia.",
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439022" }
+  },
+  {
+    "_id": { "$oid": "707f1f77bcf86cd799439213" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439017" },
+    "data": { "$date": "2024-09-25T10:30:00Z" },
+    "descrizione": "Trattamento urgente per colpo della strega. Applicata terapia antalgica e decontratturante sulla muscolatura lombare. Paziente trova sollievo.",
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439023" }
+  },
+  {
+    "_id": { "$oid": "707f1f77bcf86cd799439214" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439017" },
+    "data": { "$date": "2024-11-10T10:30:00Z" },
+    "descrizione": "Prosegue recupero. Eseguita mobilizzazione attiva della colonna lombare. Il dolore alla schiena è quasi completamente risolto.",
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439023" }
+  },
+  {
+    "_id": { "$oid": "707f1f77bcf86cd799439215" },
+    "paziente_id": { "$oid": "507f1f77bcf86cd799439017" },
+    "data": { "$date": "2024-12-18T10:30:00Z" },
+    "descrizione": "Seduta conclusiva. Paziente completamente guarito dalla lombalgia. Test funzionali nella norma. Dimesso con consigli posturali.",
+    "professionista_id": { "$oid": "507f1f77bcf86cd799439023" }
+  }
+]

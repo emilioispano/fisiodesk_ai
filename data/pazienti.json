@@ -1,0 +1,79 @@
+[
+  {
+    "_id": { "$oid": "507f1f77bcf86cd799439011" },
+    "nome": "Mario",
+    "cognome": "Rossi",
+    "eta": 54,
+    "telefono": "+39 333 123 4567",
+    "email": "mario.rossi@email.com",
+    "professionista_principale": { "$oid": "507f1f77bcf86cd799439021" },
+    "data_registrazione": { "$date": "2024-06-15T10:00:00Z" },
+    "stato": "attivo"
+  },
+  {
+    "_id": { "$oid": "507f1f77bcf86cd799439012" },
+    "nome": "Laura",
+    "cognome": "Bianchi",
+    "eta": 42,
+    "telefono": "+39 335 987 6543",
+    "email": "laura.bianchi@email.com",
+    "professionista_principale": { "$oid": "507f1f77bcf86cd799439021" },
+    "data_registrazione": { "$date": "2024-07-20T14:30:00Z" },
+    "stato": "attivo"
+  },
+  {
+    "_id": { "$oid": "507f1f77bcf86cd799439013" },
+    "nome": "Giuseppe",
+    "cognome": "Verdi",
+    "eta": 61,
+    "telefono": "+39 338 456 7890",
+    "email": "giuseppe.verdi@email.com",
+    "professionista_principale": { "$oid": "507f1f77bcf86cd799439021" },
+    "data_registrazione": { "$date": "2024-05-10T09:15:00Z" },
+    "stato": "attivo"
+  },
+  {
+    "_id": { "$oid": "507f1f77bcf86cd799439014" },
+    "nome": "Anna",
+    "cognome": "Ferrari",
+    "eta": 38,
+    "telefono": "+39 340 111 2222",
+    "email": "anna.ferrari@email.com",
+    "professionista_principale": { "$oid": "507f1f77bcf86cd799439022" },
+    "data_registrazione": { "$date": "2024-08-22T11:20:00Z" },
+    "stato": "attivo"
+  },
+  {
+    "_id": { "$oid": "507f1f77bcf86cd799439015" },
+    "nome": "Roberto",
+    "cognome": "Romano",
+    "eta": 49,
+    "telefono": "+39 342 333 4444",
+    "email": "r.romano@email.com",
+    "professionista_principale": { "$oid": "507f1f77bcf86cd799439021" },
+    "data_registrazione": { "$date": "2024-09-05T15:45:00Z" },
+    "stato": "attivo"
+  },
+  {
+    "_id": { "$oid": "507f1f77bcf86cd799439016" },
+    "nome": "Francesca",
+    "cognome": "Ricci",
+    "eta": 67,
+    "telefono": "+39 345 555 6666",
+    "email": "f.ricci@email.com",
+    "professionista_principale": { "$oid": "507f1f77bcf86cd799439022" },
+    "data_registrazione": { "$date": "2024-04-12T08:30:00Z" },
+    "stato": "sospeso"
+  },
+  {
+    "_id": { "$oid": "507f1f77bcf86cd799439017" },
+    "nome": "Marco",
+    "cognome": "Colombo",
+    "eta": 55,
+    "telefono": "+39 347 777 8888",
+    "email": "marco.colombo@email.com",
+    "professionista_principale": { "$oid": "507f1f77bcf86cd799439023" },
+    "data_registrazione": { "$date": "2024-03-18T10:00:00Z" },
+    "stato": "attivo"
+  }
+]
