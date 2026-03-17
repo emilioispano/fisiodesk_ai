@@ -1,4 +1,4 @@
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional, Tuple
 from pymongo import MongoClient
 
 from app.config import MONGO_URI, DB_NAME, WINDOW_START, REFERENCE_DATE
@@ -14,15 +14,20 @@ def load_patients_map(db) -> Dict[str, Dict[str, Any]]:
     return {str(p["_id"]): p for p in patients}
 
 
-def load_recent_clinical_docs(db) -> List[Dict[str, Any]]:
+def load_recent_clinical_docs(db, time_window: Optional[Tuple[str, str]] = None) -> List[Dict[str, Any]]:
+    if time_window is None:
+        start_date, end_date = WINDOW_START, REFERENCE_DATE
+    else:
+        start_date, end_date = time_window
+
     valuation_docs = list(
         db.schede_valutazione.find(
-            {"data": {"$gte": WINDOW_START, "$lt": REFERENCE_DATE}}
+            {"data": {"$gte": start_date, "$lt": end_date}}
         )
     )
     treatment_docs = list(
         db.diario_trattamenti.find(
-            {"data": {"$gte": WINDOW_START, "$lt": REFERENCE_DATE}}
+            {"data": {"$gte": start_date, "$lt": end_date}}
         )
     )
 
@@ -46,9 +51,14 @@ def load_recent_clinical_docs(db) -> List[Dict[str, Any]]:
     return docs
 
 
-def load_latest_event_by_patient(db) -> Dict[str, Dict[str, Any]]:
+def load_latest_event_by_patient(db, time_window: Optional[Tuple[str, str]] = None) -> Dict[str, Dict[str, Any]]:
+    if time_window is None:
+        _, end_date = WINDOW_START, REFERENCE_DATE
+    else:
+        _, end_date = time_window
+
     pipeline = [
-        {"$match": {"data": {"$lt": REFERENCE_DATE}}},
+        {"$match": {"data": {"$lt": end_date}}},
         {"$sort": {"paziente_id": 1, "data": -1}},
         {
             "$group": {

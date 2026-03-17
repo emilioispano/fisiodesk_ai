@@ -1,12 +1,12 @@
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional, Tuple
 
 from app.db import get_db, load_patients_map, load_recent_clinical_docs, load_latest_event_by_patient
 from app.models import ClinicalEvidence, PatientResult
 from app.scoring import score_low_back_pain, score_improvement
 
 
-def build_clinical_evidences(db) -> List[ClinicalEvidence]:
-    docs = load_recent_clinical_docs(db)
+def build_clinical_evidences(db, time_window: Optional[Tuple[str, str]] = None) -> List[ClinicalEvidence]:
+    docs = load_recent_clinical_docs(db, time_window=time_window)
     evidences: List[ClinicalEvidence] = []
 
     for doc in docs:
@@ -47,12 +47,17 @@ def aggregate_patient_scores(evidences: List[ClinicalEvidence]) -> Dict[str, Dic
     return out
 
 
-def run_query(condition=None, time_window=None, trend=None) -> List[PatientResult]:
+def run_query(
+    condition: str = "lombalgia",
+    time_window: Optional[Tuple[str, str]] = None,
+    trend: str = "improvement",
+    latest_event_status: str = "no_show",
+) -> List[PatientResult]:
     db = get_db()
 
     patients_map = load_patients_map(db)
-    latest_events = load_latest_event_by_patient(db)
-    evidences = build_clinical_evidences(db)
+    latest_events = load_latest_event_by_patient(db, time_window=time_window)
+    evidences = build_clinical_evidences(db, time_window=time_window)
     aggregated = aggregate_patient_scores(evidences)
 
     results: List[PatientResult] = []
@@ -67,30 +72,33 @@ def run_query(condition=None, time_window=None, trend=None) -> List[PatientResul
         lbp_score = agg["lbp_score"]
         improvement_score = agg["improvement_score"]
 
-        has_lbp = lbp_score >= 1.0
-        has_improvement = improvement_score >= 1.0
-        latest_is_no_show = latest_event.get("stato") == "no_show"
+        if condition == "lombalgia" and lbp_score < 1.0:
+            continue
 
-        if has_lbp and has_improvement and latest_is_no_show:
-            full_name = f'{patient.get("nome", "")} {patient.get("cognome", "")}'.strip()
+        if trend == "improvement" and improvement_score < 1.0:
+            continue
 
-            evidence_samples = [
-                #ev.text[:140] + ("..." if len(ev.text) > 140 else "") for ev in sorted(agg["evidences"], key=lambda x: x.date, reverse=True)
-                ev.text for ev in sorted(agg["evidences"], key=lambda x: x.date, reverse=True)
-            ]
+        if latest_event.get("stato") != latest_event_status:
+            continue
 
-            results.append(
-                PatientResult(
-                    patient_id=patient_id,
-                    full_name=full_name,
-                    latest_event_date=latest_event["data"],
-                    latest_event_status=latest_event["stato"],
-                    lbp_score=lbp_score,
-                    improvement_score=improvement_score,
-                    evidence_count=len(agg["evidences"]),
-                    evidence_samples=evidence_samples,
-                )
+        full_name = f'{patient.get("nome", "")} {patient.get("cognome", "")}'.strip()
+
+        evidence_samples = [
+            ev.text for ev in sorted(agg["evidences"], key=lambda x: x.date, reverse=True)
+        ]
+
+        results.append(
+            PatientResult(
+                patient_id=patient_id,
+                full_name=full_name,
+                latest_event_date=latest_event["data"],
+                latest_event_status=latest_event["stato"],
+                lbp_score=lbp_score,
+                improvement_score=improvement_score,
+                evidence_count=len(agg["evidences"]),
+                evidence_samples=evidence_samples,
             )
+        )
 
     results.sort(key=lambda r: (r.latest_event_date, r.improvement_score), reverse=True)
     return results

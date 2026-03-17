@@ -4,41 +4,37 @@ from app.services import run_query
 def prompt_user():
     print("=== FisioDesk Smart Query ===\n")
 
-    # Patologia
     print("Seleziona la patologia:")
     print("1) Lombalgia")
-    condition = input("> ").strip()
+    condition_choice = input("> ").strip()
 
-    # Intervallo temporale
     print("\nSeleziona intervallo temporale:")
     print("1) Ultimi 3 mesi (fino al 31/12/2024)")
-    time_window = input("> ").strip()
+    time_choice = input("> ").strip()
 
-    # Trend
-    print("\nSeleziona tipo di andamento:")
+    print("\nSeleziona andamento clinico:")
     print("1) Miglioramento")
-    trend = input("> ").strip()
+    trend_choice = input("> ").strip()
 
-    # Validazione minimale (no overkill)
-    if condition != "1" or time_window != "1" or trend != "1":
-        print("\n[!] Scelta non valida. Uso configurazione di default.\n")
+    if condition_choice != "1" or time_choice != "1" or trend_choice != "1":
+        print("\nScelta non valida: uso configurazione di default.\n")
 
     return {
         "condition": "lombalgia",
         "time_window": ("2024-10-01", "2025-01-01"),
-        "trend": "improvement"
+        "trend": "improvement",
+        "latest_event_status": "no_show",
     }
 
 
 def main():
-    user_input = prompt_user()
-
-    print("\nEseguo Query...\n")
+    params = prompt_user()
 
     matches = run_query(
-        condition=user_input["condition"],
-        time_window=user_input["time_window"],
-        trend=user_input["trend"]
+        condition=params["condition"],
+        time_window=params["time_window"],
+        trend=params["trend"],
+        latest_event_status=params["latest_event_status"],
     )
 
     print("\n=== QUERY RESULT ===\n")
