@@ -1,3 +1,4 @@
+from datetime import datetime, timezone
 from app.services import run_query
 
 
@@ -21,7 +22,10 @@ def prompt_user():
 
     return {
         "condition": "lombalgia",
-        "time_window": ("2024-10-01", "2025-01-01"),
+        "time_window": (
+            datetime(2024, 10, 1, tzinfo=timezone.utc),
+            datetime(2025, 1, 1, tzinfo=timezone.utc),
+        ),
         "trend": "improvement",
         "latest_event_status": "no_show",
     }

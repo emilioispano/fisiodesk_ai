@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import Any, Dict, List, Optional, Tuple
 
 from app.db import get_db, load_patients_map, load_recent_clinical_docs, load_latest_event_by_patient
@@ -5,7 +6,7 @@ from app.models import ClinicalEvidence, PatientResult
 from app.scoring import score_low_back_pain, score_improvement
 
 
-def build_clinical_evidences(db, time_window: Optional[Tuple[str, str]] = None) -> List[ClinicalEvidence]:
+def build_clinical_evidences(db, time_window: Optional[Tuple[datetime, datetime]] = None) -> List[ClinicalEvidence]:
     docs = load_recent_clinical_docs(db, time_window=time_window)
     evidences: List[ClinicalEvidence] = []
 
@@ -49,7 +50,7 @@ def aggregate_patient_scores(evidences: List[ClinicalEvidence]) -> Dict[str, Dic
 
 def run_query(
     condition: str = "lombalgia",
-    time_window: Optional[Tuple[str, str]] = None,
+    time_window: Optional[Tuple[datetime, datetime]] = None,
     trend: str = "improvement",
     latest_event_status: str = "no_show",
 ) -> List[PatientResult]:

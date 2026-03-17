@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import Any, Dict, List, Optional, Tuple
 from pymongo import MongoClient
 
@@ -14,7 +15,7 @@ def load_patients_map(db) -> Dict[str, Dict[str, Any]]:
     return {str(p["_id"]): p for p in patients}
 
 
-def load_recent_clinical_docs(db, time_window: Optional[Tuple[str, str]] = None) -> List[Dict[str, Any]]:
+def load_recent_clinical_docs(db, time_window: Optional[Tuple[datetime, datetime]] = None) -> List[Dict[str, Any]]:
     if time_window is None:
         start_date, end_date = WINDOW_START, REFERENCE_DATE
     else:
@@ -51,7 +52,7 @@ def load_recent_clinical_docs(db, time_window: Optional[Tuple[str, str]] = None)
     return docs
 
 
-def load_latest_event_by_patient(db, time_window: Optional[Tuple[str, str]] = None) -> Dict[str, Dict[str, Any]]:
+def load_latest_event_by_patient(db, time_window: Optional[Tuple[datetime, datetime]] = None) -> Dict[str, Dict[str, Any]]:
     if time_window is None:
         _, end_date = WINDOW_START, REFERENCE_DATE
     else:
