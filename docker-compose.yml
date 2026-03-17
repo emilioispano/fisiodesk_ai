@@ -23,7 +23,7 @@ services:
       - ./data:/data
     command: >
       bash -c "
-        sleep 5 &&
+        sleep 30 &&
         mongoimport --host mongodb --db fisiodesk --collection pazienti --file /data/pazienti.json --jsonArray &&
         mongoimport --host mongodb --db fisiodesk --collection schede_valutazione --file /data/schede_valutazione.json --jsonArray &&
         mongoimport --host mongodb --db fisiodesk --collection diario_trattamenti --file /data/diario_trattamenti.json --jsonArray &&
