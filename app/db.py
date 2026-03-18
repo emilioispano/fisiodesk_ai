@@ -21,6 +21,9 @@ def load_recent_clinical_docs(db, time_window: Optional[Tuple[datetime, datetime
     else:
         start_date, end_date = time_window
 
+    print(f"Start: {start_date}")
+    print(f"End: {end_date}")
+
     valuation_docs = list(
         db.schede_valutazione.find(
             {"data": {"$gte": start_date, "$lt": end_date}}
@@ -54,12 +57,12 @@ def load_recent_clinical_docs(db, time_window: Optional[Tuple[datetime, datetime
 
 def load_latest_event_by_patient(db, time_window: Optional[Tuple[datetime, datetime]] = None) -> Dict[str, Dict[str, Any]]:
     if time_window is None:
-        _, end_date = WINDOW_START, REFERENCE_DATE
+        start_date, end_date = WINDOW_START, REFERENCE_DATE
     else:
-        _, end_date = time_window
+        start_date, end_date = time_window
 
     pipeline = [
-        {"$match": {"data": {"$lt": end_date}}},
+        {"$match": {"data": {"$gte": start_date, "$lt": end_date}}},
         {"$sort": {"paziente_id": 1, "data": -1}},
         {
             "$group": {

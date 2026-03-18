@@ -7,23 +7,54 @@ def prompt_user():
 
     print("Seleziona la patologia:")
     print("1) Lombalgia")
+    print("2) Work In Progress...")
     condition_choice = input("> ").strip()
 
-    print("\nSeleziona intervallo temporale:")
-    print("1) Ultimi 3 mesi (fino al 31/12/2024)")
-    time_choice = input("> ").strip()
+    print("\nSeleziona la data precedente il 31/12/2024 per definire il periodo:")
+    print("Mese: [1 - 12]")
+    month_choice = input("> ").strip()
+    print("Giorno: [1 - 31]")
+    day_choice = input("> ").strip()
 
     print("\nSeleziona andamento clinico:")
     print("1) Miglioramento")
+    print("2) Peggioramento")
     trend_choice = input("> ").strip()
 
-    if condition_choice != "1" or time_choice != "1" or trend_choice != "1":
-        print("\nScelta non valida: uso configurazione di default.\n")
+
+    if condition_choice != "1":
+        print("\nScelta patologia non valida: uso configurazione di default (Lombalgia).\n")
+        condition_choice = "1"
+
+    if trend_choice != "1":
+        print("\nScelta trend non valida: uso ocnfigurazione di default (Miglioramento).\n")
+
+    if int(month_choice) < 1 or int(month_choice) > 12:
+        print("\nScelta non valida: uso data di default 01/10/2024")
+        month_choice = "10"
+        day_choice = "1"
+
+    if int(day_choice) < 1:
+        print("\nScelta giorno non valida: uso il primo del mese scelto")
+        day_choice = "1"
+
+    if month_choice in ["1", "3", "5", "7", "8", "10", "12"] and int(day_choice) > 31:
+        print("\nScelta giorno non valida: uso l'ultimo del mese scelto")
+        day_choice = "31"
+
+    if month_choice in ["11", "4", "6", "9"] and int(day_choice) > 30:
+        print("\nScelta giorno non valida: uso l'ultimo del mese scelto")
+        day_choice = "30"
+
+    if month_choice == "2" and int(day_choice) > 28:
+        print("\nScelta giorno non valida: uso l'ultimo del mese scelto")
+        day_choice = "28"
+
 
     return {
         "condition": "lombalgia",
         "time_window": (
-            datetime(2024, 10, 1, tzinfo=timezone.utc),
+            datetime(2024, int(month_choice), int(day_choice), tzinfo=timezone.utc),
             datetime(2025, 1, 1, tzinfo=timezone.utc),
         ),
         "trend": "improvement",
