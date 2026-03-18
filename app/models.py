@@ -11,6 +11,7 @@ class ClinicalEvidence:
     text: str
     lbp_score: float
     improvement_score: float
+    worsening_score: float
 
 
 @dataclass
@@ -21,5 +22,6 @@ class PatientResult:
     latest_event_status: str
     lbp_score: float
     improvement_score: float
+    worsening_score: float
     evidence_count: int
     evidence_samples: List[str]

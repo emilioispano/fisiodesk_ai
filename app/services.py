@@ -3,7 +3,7 @@ from typing import Any, Dict, List, Optional, Tuple
 
 from app.db import get_db, load_patients_map, load_recent_clinical_docs, load_latest_event_by_patient
 from app.models import ClinicalEvidence, PatientResult
-from app.scoring import score_low_back_pain, score_improvement
+from app.scoring import score_low_back_pain, score_improvement, score_worsening
 
 
 def build_clinical_evidences(db, time_window: Optional[Tuple[datetime, datetime]] = None) -> List[ClinicalEvidence]:
@@ -14,8 +14,9 @@ def build_clinical_evidences(db, time_window: Optional[Tuple[datetime, datetime]
         text = doc["text"]
         lbp = score_low_back_pain(text)
         improvement = score_improvement(text)
+        worsening = score_worsening(text)
 
-        if lbp > 0 or improvement > 0:
+        if lbp > 0 or improvement > 0 or worsening > 0:
             evidences.append(
                 ClinicalEvidence(
                     patient_id=doc["patient_id"],
@@ -24,6 +25,7 @@ def build_clinical_evidences(db, time_window: Optional[Tuple[datetime, datetime]
                     text=text,
                     lbp_score=lbp,
                     improvement_score=improvement,
+                    worsening_score=worsening,
                 )
             )
 
@@ -38,11 +40,13 @@ def aggregate_patient_scores(evidences: List[ClinicalEvidence]) -> Dict[str, Dic
             out[ev.patient_id] = {
                 "lbp_score": 0.0,
                 "improvement_score": 0.0,
+                "worsening_score": 0.0,
                 "evidences": [],
             }
 
         out[ev.patient_id]["lbp_score"] += ev.lbp_score
         out[ev.patient_id]["improvement_score"] += ev.improvement_score
+        out[ev.patient_id]["worsening_score"] += ev.worsening_score
         out[ev.patient_id]["evidences"].append(ev)
 
     return out
@@ -72,11 +76,15 @@ def run_query(
 
         lbp_score = agg["lbp_score"]
         improvement_score = agg["improvement_score"]
+        worsening_score = agg["worsening_score"]
 
         if condition == "lombalgia" and lbp_score < 1.0:
             continue
 
         if trend == "improvement" and improvement_score < 1.0:
+            continue
+
+        if trend == "worsening" and worsening_score < 1.0:
             continue
 
         if latest_event.get("stato") != latest_event_status:
@@ -96,10 +104,15 @@ def run_query(
                 latest_event_status=latest_event["stato"],
                 lbp_score=lbp_score,
                 improvement_score=improvement_score,
+                worsening_score=worsening_score,
                 evidence_count=len(agg["evidences"]),
                 evidence_samples=evidence_samples,
             )
         )
 
-    results.sort(key=lambda r: (r.latest_event_date, r.improvement_score), reverse=True)
+    if trend == "worsening":
+        results.sort(key=lambda r: (r.latest_event_date, r.worsening_score), reverse=True)
+    else:
+        results.sort(key=lambda r: (r.latest_event_date, r.improvement_score), reverse=True)
+
     return results

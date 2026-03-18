@@ -45,13 +45,24 @@ IMPROVEMENT_PATTERNS = [
 NON_IMPROVEMENT_PATTERNS = [
     r"\bsituazione stazionaria\b",
     r"\bstazionaria\b",
-    r"\blieve peggioramento\b",
-    r"\bpeggioramento\b",
     r"\bnessun miglioramento\b",
     r"\bpersistente\b",
 ]
 
-# Stem lessicali utili
+WORSENING_PATTERNS = [
+    r"\bpeggioramento\b",
+    r"\blieve peggioramento\b",
+    r"\bnetto peggioramento\b",
+    r"\bprogressivo peggioramento\b",
+    r"\briacutizzazione\b",
+    r"\bsintomi aumentati\b",
+    r"\bdolore aumentato\b",
+    r"\bdolore in aumento\b",
+    r"\bmaggiore limitazione\b",
+    r"\bridotta mobilità\b",
+    r"\bpi[uù] dolore\b",
+]
+
 LBP_STEMS = {
     "lomb",
     "schien",
@@ -75,9 +86,15 @@ IMPROVEMENT_STEMS = {
 }
 
 NON_IMPROVEMENT_STEMS = {
-    "peggior",
     "stazionar",
     "persistent",
+}
+
+WORSENING_STEMS = {
+    "peggior",
+    "aument",
+    "riacut",
+    "limit",
 }
 
 
@@ -107,19 +124,51 @@ def score_improvement(text: str) -> float:
 
     positive_hits = sum(1 for pattern in IMPROVEMENT_PATTERNS if re.search(pattern, t))
     negative_hits = sum(1 for pattern in NON_IMPROVEMENT_PATTERNS if re.search(pattern, t))
+    worsening_hits = sum(1 for pattern in WORSENING_PATTERNS if re.search(pattern, t))
 
     stem_positive_hits = sum(1 for s in stems if s in IMPROVEMENT_STEMS)
     stem_negative_hits = sum(1 for s in stems if s in NON_IMPROVEMENT_STEMS)
+    stem_worsening_hits = sum(1 for s in stems if s in WORSENING_STEMS)
 
     score = (
         positive_hits * 1.0
         + stem_positive_hits * 0.2
-        - negative_hits * 1.2
-        - stem_negative_hits * 0.3
+        - negative_hits * 1.0
+        - stem_negative_hits * 0.25
+        - worsening_hits * 1.3
+        - stem_worsening_hits * 0.35
     )
 
     pain_values = extract_pain_scores(text)
     if len(pain_values) >= 2 and pain_values[0] > pain_values[-1]:
         score += 1.5
 
-    return score
+    return max(score, 0.0)
+
+
+def score_worsening(text: str) -> float:
+    t = normalize_text(text)
+    stems = tokenize_and_stem(text)
+
+    positive_hits = sum(1 for pattern in WORSENING_PATTERNS if re.search(pattern, t))
+    soft_hits = sum(1 for pattern in NON_IMPROVEMENT_PATTERNS if re.search(pattern, t))
+    improvement_hits = sum(1 for pattern in IMPROVEMENT_PATTERNS if re.search(pattern, t))
+
+    stem_positive_hits = sum(1 for s in stems if s in WORSENING_STEMS)
+    stem_soft_hits = sum(1 for s in stems if s in NON_IMPROVEMENT_STEMS)
+    stem_improvement_hits = sum(1 for s in stems if s in IMPROVEMENT_STEMS)
+
+    score = (
+        positive_hits * 1.2
+        + stem_positive_hits * 0.3
+        + soft_hits * 0.35
+        + stem_soft_hits * 0.1
+        - improvement_hits * 1.2
+        - stem_improvement_hits * 0.25
+    )
+
+    pain_values = extract_pain_scores(text)
+    if len(pain_values) >= 2 and pain_values[0] < pain_values[-1]:
+        score += 1.5
+
+    return max(score, 0.0)

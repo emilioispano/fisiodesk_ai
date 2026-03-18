@@ -26,8 +26,10 @@ def prompt_user():
         print("\nScelta patologia non valida: uso configurazione di default (Lombalgia).\n")
         condition_choice = "1"
 
-    if trend_choice != "1":
+    if trend_choice not in {"1", "2"}:
         print("\nScelta trend non valida: uso ocnfigurazione di default (Miglioramento).\n")
+        trend_choice = "1"
+    trend = "worsening" if trend_choice == "2" else "improvement"
 
     if int(month_choice) < 1 or int(month_choice) > 12:
         print("\nScelta non valida: uso data di default 01/10/2024")
@@ -57,7 +59,7 @@ def prompt_user():
             datetime(2024, int(month_choice), int(day_choice), tzinfo=timezone.utc),
             datetime(2025, 1, 1, tzinfo=timezone.utc),
         ),
-        "trend": "improvement",
+        "trend": trend,
         "latest_event_status": "no_show",
     }
 
@@ -79,6 +81,7 @@ def main():
         print(f"  latest_event: {r.latest_event_date} [{r.latest_event_status}]")
         print(f"  lbp_score: {r.lbp_score:.2f}")
         print(f"  improvement_score: {r.improvement_score:.2f}")
+        print(f"  worsening_score: {r.worsening_score:.2f}")
         print(f"  evidences: {r.evidence_count}")
         for sample in r.evidence_samples:
             print(f"    • {sample}")
