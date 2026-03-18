@@ -21,6 +21,10 @@ def prompt_user():
     print("2) Peggioramento")
     trend_choice = input("> ").strip()
 
+    print("\nFiltro ultimo appuntamento:")
+    print("1) Solo no_show")
+    print("2) Nessun filtro")
+    event_choice = input("> ").strip()
 
     if condition_choice != "1":
         print("\nScelta patologia non valida: uso configurazione di default (Lombalgia).\n")
@@ -52,6 +56,7 @@ def prompt_user():
         print("\nScelta giorno non valida: uso l'ultimo del mese scelto")
         day_choice = "28"
 
+    latest_event_status = None if event_choice == "2" else "no_show"
 
     return {
         "condition": "lombalgia",
@@ -60,7 +65,7 @@ def prompt_user():
             datetime(2025, 1, 1, tzinfo=timezone.utc),
         ),
         "trend": trend,
-        "latest_event_status": "no_show",
+        "latest_event_status": latest_event_status,
     }
 
 

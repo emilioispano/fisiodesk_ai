@@ -87,7 +87,7 @@ def run_query(
         if trend == "worsening" and worsening_score < 1.0:
             continue
 
-        if latest_event.get("stato") != latest_event_status:
+        if latest_event_status is not None and latest_event.get("stato") != latest_event_status:
             continue
 
         full_name = f'{patient.get("nome", "")} {patient.get("cognome", "")}'.strip()
