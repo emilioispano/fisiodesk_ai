@@ -3,14 +3,15 @@ from app.services import run_query
 
 
 def prompt_user():
+    # Prompt CLI per navigare la app
     print("=== FisioDesk Smart Query ===\n")
 
     print("Seleziona la patologia:")
     print("1) Lombalgia")
-    print("2) Work In Progress...")
+    print("*) Work In Progress...")
     condition_choice = input("> ").strip()
 
-    print("\nSeleziona la data precedente il 31/12/2024 per definire il periodo:")
+    print("\nSeleziona la data (precedente il 31/12/2024) per definire il periodo:")
     print("Mese: [1 - 12]")
     month_choice = input("> ").strip()
     print("Giorno: [1 - 31]")
@@ -26,6 +27,7 @@ def prompt_user():
     print("2) Nessun filtro")
     event_choice = input("> ").strip()
 
+    # Controlli sull'input
     if condition_choice != "1":
         print("\nScelta patologia non valida: uso configurazione di default (Lombalgia).\n")
         condition_choice = "1"
@@ -72,6 +74,7 @@ def prompt_user():
 def main():
     params = prompt_user()
 
+    # Passo le scelte alla run_query per estrazione dei dati
     matches = run_query(
         condition=params["condition"],
         time_window=params["time_window"],
@@ -79,6 +82,7 @@ def main():
         latest_event_status=params["latest_event_status"],
     )
 
+    # E stampo i risultati
     print("\n=== QUERY RESULT ===\n")
     for r in matches:
         print(f"- {r.full_name}")
