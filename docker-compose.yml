@@ -21,11 +21,13 @@ services:
     container_name: fisiodesk-mongodb-seed
     volumes:
       - ./data:/data
-      - ./launch:/launch
     command: >
       bash -c "
         sleep 30 &&
-        bash /launch/getup.sh &&
+        mongoimport --host mongodb --db fisiodesk --collection pazienti --file /data/pazienti.json --jsonArray &&
+        mongoimport --host mongodb --db fisiodesk --collection schede_valutazione --file /data/schede_valutazione.json --jsonArray &&
+        mongoimport --host mongodb --db fisiodesk --collection diario_trattamenti --file /data/diario_trattamenti.json --jsonArray &&
+        mongoimport --host mongodb --db fisiodesk --collection eventi_calendario --file /data/eventi_calendario.json --jsonArray &&
         echo 'Dati importati con successo! ✅'
       "
     depends_on:
