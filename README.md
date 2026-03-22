@@ -135,25 +135,17 @@ Contengono dati realistici con variabilità linguistica (es. lombalgia, low back
 
 ---
 
-## 🧪 Test e Debug
-
-Per verificare il funzionamento:
-
-- Controlla i log dell’app
-- Testa query manualmente via API
-- Verifica i dati nel database
-
----
 
 ## ⚙️ Troubleshooting
 
 ### Problema: l’app non parte
 
 ```bash
-bash init.sh
+bash init/drop.sh
+./init.sh
 ```
+→ spegne i eventuali altre copie in esecuzione (docker-compose down) e riavvia tutti i servizi necessari
 
-→ assicurati che le dipendenze siano installate
 
 ---
 
@@ -171,26 +163,6 @@ bash init.sh
 
 ---
 
-## 🧩 Development Workflow
-
-1. Setup iniziale:
-
-```bash
-bash init.sh
-```
-
-2. Avvio:
-
-```bash
-bash runapp.sh
-```
-
-3. Modifica codice in `app/`
-
-4. Restart app
-
----
-
 ## 🎯 Assignment Goal
 
 Questo progetto serve a dimostrare:
@@ -205,4 +177,3 @@ Questo progetto serve a dimostrare:
 ## 📌 Note
 
 - I dati coprono un periodo temporale limitato → usa una data di riferimento
-- Le query richiedono interpretazione semantica (non solo filtri esatti)
