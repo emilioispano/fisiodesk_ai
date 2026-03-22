@@ -6,9 +6,10 @@ from app.models import ClinicalEvidence, PatientResult
 from app.scoring import score_low_back_pain, score_improvement, score_worsening
 
 
-def build_clinical_evidences(db, time_window: Optional[Tuple[datetime, datetime]] = None) -> List[ClinicalEvidence]:
+# Salva una lista delle descrizionin a supporto della scelta
+def build_clinical_evidences(db, time_window=None):
     docs = load_recent_clinical_docs(db, time_window=time_window)
-    evidences: List[ClinicalEvidence] = []
+    evidences = []
 
     for doc in docs:
         text = doc["text"]
@@ -32,8 +33,9 @@ def build_clinical_evidences(db, time_window: Optional[Tuple[datetime, datetime]
     return evidences
 
 
-def aggregate_patient_scores(evidences: List[ClinicalEvidence]) -> Dict[str, Dict[str, Any]]:
-    out: Dict[str, Dict[str, Any]] = {}
+# Per per pazienti con più eventi, li accorpo
+def aggregate_patient_scores(evidences):
+    out = {}
 
     for ev in evidences:
         if ev.patient_id not in out:
@@ -52,12 +54,9 @@ def aggregate_patient_scores(evidences: List[ClinicalEvidence]) -> Dict[str, Dic
     return out
 
 
-def run_query(
-    condition: str = "lombalgia",
-    time_window: Optional[Tuple[datetime, datetime]] = None,
-    trend: str = "improvement",
-    latest_event_status: str = "no_show",
-) -> List[PatientResult]:
+# Qua avviene la ricerca vera e propria "targettizzata" alle scelte fatte in input
+# Lascio i default per failsafe
+def run_query(condition="lombalgia", time_window=None, trend="improvement", latest_event_status="no_show"):
     db = get_db()
 
     patients_map = load_patients_map(db)
@@ -65,7 +64,7 @@ def run_query(
     evidences = build_clinical_evidences(db, time_window=time_window)
     aggregated = aggregate_patient_scores(evidences)
 
-    results: List[PatientResult] = []
+    results = []
 
     for patient_id, agg in aggregated.items():
         latest_event = latest_events.get(patient_id)
@@ -78,6 +77,8 @@ def run_query(
         improvement_score = agg["improvement_score"]
         worsening_score = agg["worsening_score"]
 
+        # Soglie iniziali per la decisione: 1.0
+        # -> è andata bene, funziona gia
         if condition == "lombalgia" and lbp_score < 1.0:
             continue
 
@@ -92,9 +93,9 @@ def run_query(
 
         full_name = f'{patient.get("nome", "")} {patient.get("cognome", "")}'.strip()
 
-        evidence_samples = [
-            ev.text for ev in sorted(agg["evidences"], key=lambda x: x.date, reverse=True)
-        ]
+        # Se troppo lunghe, qua posso limitarle a N caratteri
+        # evidence_samples = [ev.text[:N] for ev in sorted(agg["evidences"], key=lambda x: x.date, reverse=True)]
+        evidence_samples = [ev.text for ev in sorted(agg["evidences"], key=lambda x: x.date, reverse=True)]
 
         results.append(
             PatientResult(
