@@ -122,14 +122,15 @@ def score_low_back_pain(text):
     score = (
         positive_hits * 1.0
         + stem_positive_hits * 0.25
-        - negative_hits * 0.4
-        - stem_negative_hits * 0.15
+        - negative_hits * 1.0
+        - stem_negative_hits * 0.25
     )
 
     return max(score, 0.0)
 
 
-def score_improvement(text: str) -> float:
+# Assegno uno score tanto alto quanto "confident" siamo di un miglioramento
+def score_improvement(text):
     t = normalize_text(text)
     stems = tokenize_and_stem(text)
 
@@ -143,10 +144,10 @@ def score_improvement(text: str) -> float:
 
     score = (
         positive_hits * 1.0
-        + stem_positive_hits * 0.2
+        + stem_positive_hits * 0.25
         - negative_hits * 1.0
         - stem_negative_hits * 0.25
-        - worsening_hits * 1.3
+        - worsening_hits * 1.25
         - stem_worsening_hits * 0.35
     )
 
@@ -157,7 +158,9 @@ def score_improvement(text: str) -> float:
     return max(score, 0.0)
 
 
-def score_worsening(text: str) -> float:
+# Assegno uno score tanto alto quanto "confident" siamo di un peggioramento
+# TODO: ridondante, accorpa con sopra!
+def score_worsening(text):
     t = normalize_text(text)
     stems = tokenize_and_stem(text)
 
@@ -170,11 +173,11 @@ def score_worsening(text: str) -> float:
     stem_improvement_hits = sum(1 for s in stems if s in IMPROVEMENT_STEMS)
 
     score = (
-        positive_hits * 1.2
-        + stem_positive_hits * 0.3
-        + soft_hits * 0.35
-        + stem_soft_hits * 0.1
-        - improvement_hits * 1.2
+        positive_hits * 1.5
+        + stem_positive_hits * 0.5
+        + soft_hits * 0.5
+        + stem_soft_hits * 0.25
+        - improvement_hits * 1.0
         - stem_improvement_hits * 0.25
     )
 
