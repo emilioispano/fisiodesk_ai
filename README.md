@@ -19,9 +19,8 @@ Sistema per eseguire query intelligenti su dati sanitari (MongoDB) utilizzando N
 Assicurati di avere:
 
 - Python 3.10+
-- Docker (se usato per MongoDB)
+- Docker
 - Bash (Linux/macOS)
-- (Consigliato) virtualenv
 
 ---
 
@@ -30,7 +29,7 @@ Assicurati di avere:
 ### 1. Setup ambiente
 
 ```bash
-bash init.sh
+./init.sh
 ```
 
 Questo script si occupa di:
@@ -45,7 +44,7 @@ Questo script si occupa di:
 ### 2. Avvio applicazione
 
 ```bash
-bash runapp.sh
+./runapp.sh
 ```
 
 Questo comando:
