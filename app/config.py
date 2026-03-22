@@ -1,6 +1,7 @@
 from datetime import datetime, timezone
+import os
 
-MONGO_URI = "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000"
+MONGO_URI = os.getenv("MONGO_URI", "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000")
 DB_NAME = "fisiodesk"
 
 REFERENCE_DATE = datetime(2025, 1, 1, tzinfo=timezone.utc)  # upper bound esclusivo
