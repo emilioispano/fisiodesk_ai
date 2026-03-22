@@ -52,6 +52,16 @@ Questo comando:
 - Avvia il backend
 - Espone le API (o interfaccia)
 - Connette automaticamente al database
+- Avvia la CLI dell'applicazione
+
+Qui saranno richiesti input dall'utente in forma molto grezza. Per verificare la query target selezionare:
+- 1 (lombalgie)
+- 10 (ottobre)
+- 1 (primo del mese)
+- 1 (miglioramento)
+- 1 (ultimo app: no_show)
+
+Altre opzioni funzionanti sono qualsiasi scelta della data, la scelta di controllare peggioramenti e la scelta di rimuovere il filtro ultimo evento == "no_show"
 
 ---
 
