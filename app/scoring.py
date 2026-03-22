@@ -2,6 +2,7 @@ import re
 
 from app.text_utils import normalize_text, extract_pain_scores, tokenize_and_stem
 
+# Patterns testuali per dolore lombare
 LBP_PATTERNS = [
     r"\bdolore lombare\b",
     r"\blombalgia\b",
@@ -16,6 +17,7 @@ LBP_PATTERNS = [
     r"\bbassa schiena\b",
 ]
 
+# Patterns testuali per problemi lombalgici
 NEGATIVE_LBP_CONTEXT = [
     r"\bcervicalgia\b",
     r"\bdolore cervicale\b",
@@ -23,6 +25,7 @@ NEGATIVE_LBP_CONTEXT = [
     r"\bspalla congelata\b",
 ]
 
+# Pattern testuali positivi
 IMPROVEMENT_PATTERNS = [
     r"\bmiglioramento\b",
     r"\bmiglioramento significativo\b",
@@ -42,6 +45,7 @@ IMPROVEMENT_PATTERNS = [
     r"\bcompletamente guarito\b",
 ]
 
+# Pattern testuali neutri
 NON_IMPROVEMENT_PATTERNS = [
     r"\bsituazione stazionaria\b",
     r"\bstazionaria\b",
@@ -49,6 +53,7 @@ NON_IMPROVEMENT_PATTERNS = [
     r"\bpersistente\b",
 ]
 
+# Pattern testuali negativi
 WORSENING_PATTERNS = [
     r"\bpeggioramento\b",
     r"\blieve peggioramento\b",
@@ -63,17 +68,20 @@ WORSENING_PATTERNS = [
     r"\bpi[uù] dolore\b",
 ]
 
+# Pattern testuali che puntano al campo semantico della lombalgia
 LBP_STEMS = {
     "lomb",
     "schien",
     "rachialg",
 }
 
+# Patern testuali che puntano al campo semantico di altri malanni
 NEGATIVE_LBP_STEMS = {
     "cervicalg",
     "spall",
 }
 
+# Pattern testuali che puntano a un miglioramento
 IMPROVEMENT_STEMS = {
     "miglior",
     "progress",
@@ -85,11 +93,13 @@ IMPROVEMENT_STEMS = {
     "mobil",
 }
 
+# Pattern testuali che puntano a situazioni neutre
 NON_IMPROVEMENT_STEMS = {
     "stazionar",
     "persistent",
 }
 
+# Pattern testuali che puntano a peggioramenti
 WORSENING_STEMS = {
     "peggior",
     "aument",
@@ -97,8 +107,9 @@ WORSENING_STEMS = {
     "limit",
 }
 
-
-def score_low_back_pain(text: str) -> float:
+# --- DEFINIZIONE DEGLI SCORING ---
+# Assegnazione di uno score tanto più alto quanto più probabile è il dolore lombare
+def score_low_back_pain(text):
     t = normalize_text(text)
     stems = tokenize_and_stem(text)
 
